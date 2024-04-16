@@ -1,0 +1,81 @@
+---
+title: "files_managment_with_R"
+author: "HibaBenAribi"
+date: "2024-04-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+##b get dependencies
+```{r }
+# Import the readr library
+#install.packages("readr")
+library(readr)
+```
+
+# read a txt or a csv file
+```{r }
+file <- read_csv("file.txt")
+
+# open file
+View(file)
+```
+#create a csv file
+```{r }
+#create a csv file
+
+write.csv(file, file = "my_data.csv")
+```
+# import a csv file
+```{r }
+myData = read.csv("my_data.csv") 
+print(myData)
+```
+# Dataframes managments
+
+### dependencies
+```{r }
+#install.packages("plyr")
+library(plyr) 
+  
+
+```
+
+```{r }
+# Creating a Data Frame 
+df<-data.frame(row1 = 0:2, row2 = 3:5, row3 = 6:8) 
+print("Original Data Frame") 
+print(df) 
+print("Modified Data Frame") 
+```
+
+
+## Change the dataframe structure
+```{r }
+#delete column
+
+df[["row2"]]<-NULL 
+df
+```
+
+```{r }
+# modify columns order
+df <- df[c(2, 1)] 
+print(df) 
+```
+
+
+```{r }
+# Renaming columns
+# 1 co
+names(df)[names(df)=="row3"]<-"three"
+#multipe co
+rename(df, c("row1"="A", "three"="B")) 
+```
+
+
+```{r }
+
+```

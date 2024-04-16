@@ -1,0 +1,48 @@
+# If operation
+x <- 5 
+
+# Check value is less than or greater than 10 
+if(x > 10) 
+{ 
+	print(paste(x, "is greater than 10")) 
+} 
+else
+{ 
+	print(paste(x, "is less than 10")) 
+} 
+#############################################
+# while loop
+# R program to demonstrate the use of while loop 
+
+val = 1 
+
+# using while loop 
+while (val <= 5 ) 
+{ 
+	# statements 
+	print(val) 
+	val = val + 1 
+} 
+
+#########################################
+# using for loop  
+for (val in 1:5)  
+{  
+    # statement  
+    print(val)  
+} 
+##############################
+# For 
+  
+val <- 6:11 
+  
+# Loop  
+for (i in val)  
+{  
+    if (i == 8)  
+    {  
+        # test expression  
+        next
+    }  
+    print(i)  
+}  

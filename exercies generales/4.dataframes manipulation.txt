@@ -1,0 +1,23 @@
+# Adding Package 
+df <- library(plyr) 
+  
+# Creating a Data Frame 
+df<-data.frame(row1 = 0:2, row2 = 3:5, row3 = 6:8) 
+print("Original Data Frame") 
+print(df) 
+print("Modified Data Frame") 
+
+ ###################
+#delete column
+
+df[["row2"]]<-NULL 
+####################
+# modify columns order
+df <- df[c(2, 1, 3)] 
+print(df) 
+############################ 
+# Renaming columns
+# 1 co
+names(df)[names(df)=="row3"]<-"three"
+#multipe co
+rename(df, c("row1"="one", "row2"="two", "row3"="three")) 

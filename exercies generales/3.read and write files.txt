@@ -1,0 +1,32 @@
+# Read TXT files
+
+# Import the readr library
+library(readr)
+
+# Use read_tsv() to read text file
+myData = read_tsv("geeksforgeeks.txt", col_names = FALSE)
+print(myData)
+
+##############################################
+# read csv files
+
+myData = read.csv("basic.csv") 
+print(myData)
+############################################
+#read excel files
+install.packages("xlsx") 
+  
+library(xlsx) 
+  
+# Check current working directory 
+getwd() 
+  
+# Get content into a data frame 
+data <- read.xlsx("ExcelExample.xlsx",  
+                   sheetIndex = 1,  
+                   header = FALSE) 
+
+##########################################
+#create a csv file
+
+write.csv(my_data, file = "my_data.csv")

@@ -1,0 +1,24 @@
+# Addition
+a <- c (1, 0.1)
+b <- c (2.33, 4)
+print (a+b)
+
+#Subtraction 
+ a <- 6
+ b <- 8.4
+ print (a-b)
+
+# Multiplication
+B= c(4,4) 
+C= c(5,5)
+print (B*C)
+
+#Division
+ a <- 10
+ b <- 5
+ print (a/b)
+
+# Power
+ a <- 4
+ b <- 5
+ print(a^b)

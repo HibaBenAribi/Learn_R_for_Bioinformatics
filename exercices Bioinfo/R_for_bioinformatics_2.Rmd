@@ -1,0 +1,80 @@
+---
+title: "R_for_bioinformatics_2"
+author: "HibaBenAribi"
+date: "2024-04-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# dependencies
+```{r }
+    install.packages("BiocManager")
+
+BiocManager::install("clusterProfiler")
+
+BiocManager::install("enrichplot")
+library(clusterProfiler)
+library(enrichplot)
+library(org.Hs.eg.db)
+
+
+```
+# read data
+```{r }
+expression <- read.csv("expression-data.csv")
+# define filter parameter
+deg_pval <- 0.05 # max p value to define DEGs
+deg_logFC <- 2 # min log fc value 
+expression$diffexpressed <- "Not Significant"
+expression$diffexpressed[expression$log2FoldChange  > deg_logFC  & expression$pvalue < deg_pval ] <- "Upregulated genes"
+expression$diffexpressed[expression$log2FoldChange  < -deg_logFC & expression$pvalue < deg_pval] <- "Downregulated genes"
+
+
+```
+#filter DEG
+```{r }
+#filter DEG
+all_degs <- as.data.frame(expression[expression$diffexpressed != "Not Significant",])
+all_degs <- all_degs[c(1)]
+```
+
+# ontology analysis
+## define target ontology
+```{r }
+GO_type <- "BP" #"Biological Processes"
+# OR
+GO_type <- "CC" #"Cellular Compenant"
+# PR
+GO_type <- "MF" #"Molecular Function"
+```
+# analysis
+```{r }
+
+ontology <- enrichGO(gene = all_degs, OrgDb="org.Hs.eg.db", keyType="SYMBOL", ont=GO_type)
+s_ontology <- simplify(ontology)
+
+```
+
+
+```{r }
+# bar plot
+ barplot(ontology, showCategory=10)
+
+```
+
+# visualize ontology analysis data
+```{r }
+
+# Viz "Dotplot"
+dotplot(ontology, showCategory=10)
+
+```
+
+
+```{r }
+
+# cnet plot
+cnetplot(s_ontology, foldChange=group_gene, circular = TRUE, colorEdge = TRUE)
+```
